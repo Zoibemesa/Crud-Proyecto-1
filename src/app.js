@@ -10,16 +10,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
 app.post("/notes", createNote);
-
-
 app.get("/notes", listNotes);
-
-
 app.put("/notes/:id", updateNote);
-
-
 app.delete("/notes/:id", deleteNote);
 
 export default app;
