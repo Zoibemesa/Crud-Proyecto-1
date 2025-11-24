@@ -2,9 +2,10 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-// Memoria temporal
+
 let notas = [];
 let idCounter = 1;
+
 
 app.post("/notas", (req, res) => {
   const { titulo, contenido } = req.body;
@@ -17,6 +18,7 @@ app.post("/notas", (req, res) => {
   notas.push(nuevaNota);
   res.status(201).json(nuevaNota);
 });
+
 
 app.get("/notas", (req, res) => {
   res.json(notas);
