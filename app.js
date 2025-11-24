@@ -2,11 +2,13 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-
+// Memoria temporal
 let notas = [];
 let idCounter = 1;
 
-
+// =========================
+// 1️⃣  CREAR NOTA
+// =========================
 app.post("/notas", (req, res) => {
   const { titulo, contenido } = req.body;
   const nuevaNota = {
@@ -19,7 +21,9 @@ app.post("/notas", (req, res) => {
   res.status(201).json(nuevaNota);
 });
 
-
+// =========================
+// 2️⃣  LISTAR TODAS LAS NOTAS
+// =========================
 app.get("/notas", (req, res) => {
   res.json(notas);
 });
