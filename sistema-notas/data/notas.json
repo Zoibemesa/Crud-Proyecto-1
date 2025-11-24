@@ -1,0 +1,14 @@
+[
+  {
+    "id": "2f9bd73a-00ca-43c6-86f8-336b197f2e73",
+    "titulo": "Mi primera nota",
+    "contenido": "Contenido de prueba",
+    "fecha": "2025-11-24T04:25:04.059Z"
+  },
+  {
+    "id": "39c664f4-9761-4bb6-85db-d13e0d9dc685",
+    "titulo": "Mi primera nota",
+    "contenido": "Contenido de prueba",
+    "fecha": "2025-11-24T04:26:20.065Z"
+  }
+]
