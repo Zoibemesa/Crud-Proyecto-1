@@ -1,27 +1,16 @@
-const express = require("express");
+import express from "express";
+import { createNote } from "./controllers/createNote.js";
+
 const app = express();
+
 app.use(express.json());
 
-let notas = [];
-let idCounter = 1;
-
-
-app.post("/notas", (req, res) => {
-  const { titulo, contenido } = req.body;
-
-  if (!titulo || !contenido) {
-    return res.status(400).json({ error: "Faltan campos obligatorios" });
-  }
-
-  const nuevaNota = {
-    id: idCounter++,
-    titulo,
-    contenido,
-  };
-
-  notas.push(nuevaNota);
-
-  res.status(201).json(nuevaNota);
+// List notes (dummy)
+app.get("/notes", (req, res) => {
+  res.json({ message: "List notes route works" });
 });
 
-module.exports = app;
+// Create note
+app.post("/notes", createNote);
+
+export default app;
