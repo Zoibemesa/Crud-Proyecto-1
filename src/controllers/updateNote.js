@@ -1,0 +1,14 @@
+module.exports = (req, res, notas) => {
+  const id = parseInt(req.params.id);
+  const { titulo, contenido } = req.body;
+
+  const nota = notas.find(n => n.id === id);
+  if (!nota) {
+    return res.status(404).json({ mensaje: "Nota no encontrada" });
+  }
+
+  if (titulo) nota.titulo = titulo;
+  if (contenido) nota.contenido = contenido;
+
+  res.json(nota);
+};

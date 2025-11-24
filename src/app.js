@@ -1,16 +1,19 @@
-import express from "express";
-import { createNote } from "./controllers/createNote.js";
-
+const express = require("express");
 const app = express();
-
 app.use(express.json());
 
-// List notes (dummy)
-app.get("/notes", (req, res) => {
-  res.json({ message: "List notes route works" });
-});
+// Datos en memoria
+let notas = [];
+let idCounter = 1;
 
-// Create note
-app.post("/notes", createNote);
+// Controladores
+const createNote = require("./controllers/createNote");
+const listNotes = require("./controllers/listNotes");
+const updateNote = require("./controllers/updateNote");
 
-export default app;
+// RUTAS
+app.post("/notas", (req, res) => createNote(req, res, notas, () => idCounter++));
+app.get("/notas", (req, res) => listNotes(req, res, notas));
+app.put("/notas/:id", (req, res) => updateNote(req, res, notas));
+
+module.exports = app;

@@ -5,7 +5,7 @@ app.use(express.json());
 let notas = [];
 let idCounter = 1;
 
-// CREATE NOTE
+
 app.post("/notas", (req, res) => {
   const { titulo, contenido } = req.body;
 
