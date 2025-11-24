@@ -1,27 +1,18 @@
-const express = require("express");
+import express from "express";
+import cors from "cors";
+
+import { createNote } from "./controllers/createNote.js";
+import { listNotes } from "./controllers/listNotes.js";
+import { updateNote } from "./controllers/updateNote.js";
+import { deleteNote } from "./controllers/deleteNote.js";
+
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-let notas = [];
-let idCounter = 1;
+app.post("/notes", createNote);
+app.get("/notes", listNotes);
+app.put("/notes/:id", updateNote);
+app.delete("/notes/:id", deleteNote);
 
-
-app.post("/notas", (req, res) => {
-  const { titulo, contenido } = req.body;
-
-  if (!titulo || !contenido) {
-    return res.status(400).json({ error: "Faltan campos obligatorios" });
-  }
-
-  const nuevaNota = {
-    id: idCounter++,
-    titulo,
-    contenido,
-  };
-
-  notas.push(nuevaNota);
-
-  res.status(201).json(nuevaNota);
-});
-
-module.exports = app;
+export default app;
